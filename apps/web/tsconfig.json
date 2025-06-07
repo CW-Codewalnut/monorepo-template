@@ -1,0 +1,16 @@
+{
+	"extends": "@cw/tsconfig/base.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+
+		"types": ["node", "vite/client"],
+		"rootDirs": [".", "./.react-router/types"],
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["src/*"]
+		}
+	},
+	"include": ["**/*"],
+	"exclude": ["node_modules", "build", "dist"]
+}

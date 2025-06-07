@@ -1,0 +1,41 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"cacheDir": ".turbo/cache",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^check-types", "^build"],
+			"inputs": ["$TURBO_DEFAULT$", ".env*"],
+			"outputs": ["**/build/**", "**/dist/**"]
+		},
+		"//#check": {
+			"dependsOn": ["^check-types"]
+		},
+		"check-types": {
+			"dependsOn": ["^check-types"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true,
+			"with": ["db:local"]
+		},
+		"db:local": {
+			"cache": false,
+			"persistent": true
+		},
+		"db:studio": {
+			"cache": false,
+			"persistent": true,
+			"with": ["db:local"]
+		},
+		"db:migrate": {
+			"cache": false,
+			"persistent": true,
+			"with": ["db:local"]
+		},
+		"db:generate": {
+			"cache": false,
+			"persistent": true
+		}
+	}
+}

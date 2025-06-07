@@ -1,0 +1,24 @@
+# Dependencies
+node_modules
+
+# Testing
+coverage
+
+# Build outputs
+dist
+build
+.turbo
+.react-router
+
+# Environment & local files
+.env*
+!.env.example
+.DS_Store
+*.pem
+*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Database
+.database

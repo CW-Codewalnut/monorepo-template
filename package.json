@@ -1,0 +1,35 @@
+{
+	"private": true,
+	"name": "monorepo-template",
+	"packageManager": "bun@1.2.15",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"clean": "find . \\( -type d \\( -name 'node_modules' -o -name '.turbo' -o -name 'dist' -o -name 'build' \\) -prune -exec rm -rf '{}' \\; -o -type f \\( -name 'bun.lock' -o -name '*.tsbuildinfo' \\) -exec rm -f '{}' \\; \\)",
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"check": "biome check --write",
+		"check-types": "turbo run check-types",
+		"fun": "turbo run check check-types",
+		"build": "turbo run build",
+		"dev": "turbo run dev",
+		"dev:web": "turbo run dev --filter=@cw/web",
+		"dev:api": "turbo run dev --filter=@cw/api",
+		"db:local": "turbo run db:local --filter=@cw/api",
+		"db:studio": "turbo run db:studio --filter=@cw/api",
+		"db:push": "turbo run db:push --filter=@cw/api",
+		"db:generate": "turbo run db:generate --filter=@cw/api",
+		"db:migrate": "turbo run db:migrate --filter=@cw/api"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.0.0-beta.5",
+		"turbo": "^2.5.4"
+	},
+	"trustedDependencies": [
+		"@biomejs/biome",
+		"@tailwindcss/oxide",
+		"esbuild"
+	]
+}

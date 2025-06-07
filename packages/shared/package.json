@@ -1,0 +1,13 @@
+{
+	"private": true,
+	"type": "module",
+	"name": "@cw/shared",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"scripts": {
+		"check-types": "tsc"
+	},
+	"devDependencies": {
+		"@cw/tsconfig": "workspace:*"
+	}
+}

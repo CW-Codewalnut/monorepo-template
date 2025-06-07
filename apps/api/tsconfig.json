@@ -1,0 +1,11 @@
+{
+	"extends": "@cw/tsconfig/base.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "hono/jsx",
+
+		"types": ["bun"]
+	},
+	"include": ["**/*"],
+	"exclude": ["node_modules", "build", "dist"]
+}
