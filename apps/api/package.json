@@ -15,19 +15,19 @@
 	},
 	"dependencies": {
 		"@hono/trpc-server": "^0.3.4",
-		"@libsql/client": "^0.15.8",
-		"@t3-oss/env-core": "^0.13.6",
-		"@trpc/server": "^11.3.1",
-		"better-auth": "^1.2.8",
+		"@libsql/client": "^0.15.9",
+		"@t3-oss/env-core": "^0.13.8",
+		"@trpc/server": "^11.4.1",
+		"better-auth": "^1.2.9",
 		"drizzle-orm": "^0.44.2",
 		"hono": "^4.7.11",
 		"uuid": "^11.1.0",
-		"zod": "^3.25.56"
+		"zod": "^3.25.64"
 	},
 	"devDependencies": {
 		"@cw/shared": "workspace:*",
 		"@cw/tsconfig": "workspace:*",
-		"@types/bun": "^1.2.15",
+		"@types/bun": "^1.2.16",
 		"drizzle-kit": "^0.31.1",
 		"typescript": "^5.8.3"
 	}
