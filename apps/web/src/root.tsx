@@ -3,13 +3,8 @@ import "./app.css";
 // @ts-expect-error @fontsource-variable is not typed
 import "@fontsource-variable/geist";
 
-import {
-	Links,
-	Meta,
-	type MetaDescriptor,
-	Scripts,
-	ScrollRestoration,
-} from "react-router";
+import type { MetaDescriptor } from "react-router";
+import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
 
 import { AppLayout } from "~/components/app-layout";
 import { AppProviders } from "~/components/providers";

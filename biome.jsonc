@@ -23,7 +23,16 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"style": {
+				"useImportType": {
+					"fix": "safe",
+					"level": "on",
+					"options": {
+						"style": "separatedType"
+					}
+				}
+			}
 		}
 	},
 	"javascript": {
