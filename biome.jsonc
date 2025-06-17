@@ -35,7 +35,18 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on",
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							[":BUN:", ":NODE:"],
+							":BLANK_LINE:",
+							[":PACKAGE:"],
+							":BLANK_LINE:",
+							["@cw/*", "~/*"]
+						]
+					}
+				},
 				"useSortedAttributes": "on"
 			}
 		}

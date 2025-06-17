@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+
 import { MEDIA_QUERY_DARK, STORAGE_THEME_KEY } from "~/lib/constants";
 
 type Theme = "dark" | "light" | "system";

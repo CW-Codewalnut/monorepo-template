@@ -10,6 +10,7 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from "react-router";
+
 import { AppLayout } from "~/components/app-layout";
 import { AppProviders } from "~/components/providers";
 

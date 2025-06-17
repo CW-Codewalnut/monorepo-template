@@ -1,6 +1,5 @@
 import { GoogleIcon } from "~/components/icons/google";
 import { Button } from "~/components/ui/button";
-
 import { authClient } from "~/lib/auth";
 import { ROUTE_DASHBOARD } from "~/lib/constants";
 

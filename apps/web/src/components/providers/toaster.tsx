@@ -1,4 +1,5 @@
 import { Toaster as Sonner, type ToasterProps } from "sonner";
+
 import { useTheme } from "./theme";
 
 const Toaster = (props: ToasterProps) => {
