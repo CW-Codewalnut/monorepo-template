@@ -1,14 +1,16 @@
-import { LoaderIcon } from "lucide-react";
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useLocation, useNavigate } from "react-router";
 
 import { PageCenter } from "~/components/ui/page-center";
+import { PageSpinner } from "~/components/ui/page-spinner";
 import { authClient } from "~/lib/auth";
-import { ROUTE_DASHBOARD, ROUTE_LOGIN } from "~/lib/constants";
+import { ROUTE_HOME, ROUTE_LOGIN } from "~/lib/constants";
+import { AppHeader } from "./app-header";
 import { Login } from "./login";
 
 export function AppLayout() {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const { isPending, data } = authClient.useSession();
 
 	useEffect(() => {
@@ -22,19 +24,15 @@ export function AppLayout() {
 			});
 		}
 
-		if (data) {
-			navigate(ROUTE_DASHBOARD, {
+		if (data && location.pathname === ROUTE_LOGIN) {
+			navigate(ROUTE_HOME, {
 				replace: true,
 			});
 		}
-	}, [isPending, data, navigate]);
+	}, [data, isPending, navigate, location.pathname]);
 
 	if (isPending) {
-		return (
-			<PageCenter>
-				<LoaderIcon className="animate-spin" />
-			</PageCenter>
-		);
+		return <PageSpinner />;
 	}
 
 	if (!data) {
@@ -48,7 +46,10 @@ export function AppLayout() {
 	if (data) {
 		return (
 			<>
-				<Outlet context={data} />
+				<AppHeader />
+				<main className="mx-auto max-w-7xl p-4">
+					<Outlet context={data} />
+				</main>
 			</>
 		);
 	}

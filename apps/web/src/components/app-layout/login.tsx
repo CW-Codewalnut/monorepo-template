@@ -1,13 +1,13 @@
 import { GoogleIcon } from "~/components/icons/google";
 import { Button } from "~/components/ui/button";
 import { authClient } from "~/lib/auth";
-import { ROUTE_DASHBOARD } from "~/lib/constants";
+import { ROUTE_HOME } from "~/lib/constants";
 
 export function Login() {
 	function handleSignIn() {
 		authClient.signIn.social({
 			provider: "google",
-			callbackURL: `${import.meta.env.VITE_APP_URL}${ROUTE_DASHBOARD}`,
+			callbackURL: `${import.meta.env.VITE_APP_URL}${ROUTE_HOME}`,
 		});
 	}
 

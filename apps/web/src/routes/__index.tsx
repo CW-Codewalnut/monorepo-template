@@ -1,7 +1,7 @@
 import { PageCenter } from "~/components/ui/page-center";
 import { useAuth } from "~/hooks/use-auth";
 
-export default function DashboardPage() {
+export default function HomePage() {
 	const auth = useAuth();
 
 	return (

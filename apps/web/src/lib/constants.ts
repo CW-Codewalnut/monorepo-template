@@ -1,7 +1,6 @@
 // routes
 export const ROUTE_HOME = "/";
 export const ROUTE_LOGIN = "/login";
-export const ROUTE_DASHBOARD = "/dashboard";
 
 // storage keys
 export const STORAGE_THEME_KEY = "vite-ui-theme";
