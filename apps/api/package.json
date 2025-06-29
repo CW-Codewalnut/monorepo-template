@@ -15,13 +15,13 @@
 		"start": "bun run src/index.ts"
 	},
 	"dependencies": {
-		"@hono/trpc-server": "^0.3.4",
+		"@hono/trpc-server": "^0.4.0",
 		"@libsql/client": "^0.15.9",
 		"@t3-oss/env-core": "^0.13.8",
-		"@trpc/server": "^11.4.1",
-		"better-auth": "^1.2.9",
+		"@trpc/server": "^11.4.3",
+		"better-auth": "^1.2.12",
 		"drizzle-orm": "^0.44.2",
-		"hono": "^4.7.11",
+		"hono": "^4.8.3",
 		"superjson": "^2.2.2",
 		"uuid": "^11.1.0",
 		"zod": "^3.25.67"
@@ -29,8 +29,8 @@
 	"devDependencies": {
 		"@cw/shared": "workspace:*",
 		"@cw/tsconfig": "workspace:*",
-		"@types/bun": "^1.2.16",
-		"drizzle-kit": "^0.31.1",
+		"@types/bun": "^1.2.17",
+		"drizzle-kit": "^0.31.4",
 		"typescript": "^5.8.3"
 	}
 }
