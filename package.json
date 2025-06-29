@@ -14,6 +14,7 @@
 		"check-types": "turbo run check-types",
 		"fun": "turbo run check check-types",
 		"build": "turbo run build",
+		"start": "turbo run start",
 		"dev": "turbo run dev",
 		"dev:web": "turbo run dev --filter=@cw/web",
 		"dev:api": "turbo run dev --filter=@cw/api",

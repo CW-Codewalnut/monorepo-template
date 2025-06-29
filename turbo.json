@@ -17,6 +17,11 @@
 		"dev": {
 			"cache": false,
 			"persistent": true,
+			"with": ["db:local", "db:studio"]
+		},
+		"start": {
+			"cache": false,
+			"persistent": true,
 			"with": ["db:local"]
 		},
 		"db:local": {
