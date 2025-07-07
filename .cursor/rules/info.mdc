@@ -1,0 +1,69 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Conventions
+
+## Project Structure
+
+- This is a TypeScript monorepo managed with Bun.
+- Applications are in `apps/`:
+  - `apps/api/`: Backend (Hono, tRPC, Drizzle, DB).
+  - `apps/web/`: Frontend (React 19, Vite, React Router).
+- Follow the existing directory structure and naming conventions for new files/modules.
+
+## TypeScript
+
+- Path alias: `~/*` → `src/*` (web app only).
+- Prefer `type` over `interface`.
+- Prefix imports with `type` when used solely as a type.
+- Use PascalCase for types, camelCase for variables/functions, UPPER_SNAKE_CASE for constants.
+
+## tRPC
+
+- tRPC connects `apps/web` ↔ `apps/api`.
+- Router: [apps/api/src/routers/index.ts](mdc:apps/api/src/routers/index.ts) (`appRouter`).
+- Procedures: Add to `appRouter`, use `publicProcedure` or `protectedProcedure` from [apps/api/src/lib/trpc.ts](mdc:apps/api/src/lib/trpc.ts) as appropriate.
+- Validate inputs with Zod.
+- tRPC client: [apps/web/src/lib/trpc.ts](mdc:apps/web/src/lib/trpc.ts).
+
+## Database
+
+- Turso DB, managed with Drizzle ORM.
+- Schemas: [apps/api/src/db/schema/](mdc:apps/api/src/db/schema)
+  - `auth.ts`: Auth tables.
+  - `utils.ts`: Common columns (ID, timestamps).
+- Use `db` from [apps/api/src/db/index.ts](mdc:apps/api/src/db/index.ts) for queries/mutations.
+- Follow existing schema patterns.
+
+## Authentication
+
+- Handled by `better-auth`.
+- API: [apps/api/src/lib/auth.ts](mdc:apps/api/src/lib/auth.ts)
+- Web: [apps/web/src/lib/auth.ts](mdc:apps/web/src/lib/auth.ts)
+
+## React (Frontend)
+
+- React 19, functional components, Hooks.
+- State: React Query for server state, useState/useReducer/context for local state.
+- Routing: React Router v7, file-system based (`@react-router/fs-routes`), routes in [apps/web/src/routes/](mdc:apps/web/src/routes), root layout in [apps/web/src/root.tsx](mdc:apps/web/src/root.tsx).
+- Styling: Tailwind CSS v4 ([apps/web/src/app.css](mdc:apps/web/src/app.css)), Shadcn UI components.
+  - Use `cn` from [apps/web/src/lib/utils.ts](mdc:apps/web/src/lib/utils.ts) for class names.
+  - Prefer `size-*` over `h-*` `w-*` when setting same height & width.
+
+## tRPC Client (Frontend)
+
+- Use `trpc` proxy from [apps/web/src/lib/trpc.ts](mdc:apps/web/src/lib/trpc.ts) for queries/mutations.
+- React Query (`@tanstack/react-query`) is integrated with tRPC.
+
+## Coding Style
+
+- Early returns preferred.
+- Naming:
+  - kebab-case: files/folders
+  - PascalCase: React components/types
+  - camelCase: functions/variables
+  - UPPER_SNAKE_CASE: constants
+- Use named exports (except for `/routes/`).
+- Use named function declarations except for callbacks.
