@@ -16,15 +16,15 @@
 	},
 	"dependencies": {
 		"@hono/trpc-server": "^0.4.0",
-		"@libsql/client": "^0.15.9",
+		"@libsql/client": "^0.15.10",
 		"@t3-oss/env-core": "^0.13.8",
 		"@trpc/server": "^11.4.3",
 		"better-auth": "^1.2.12",
-		"drizzle-orm": "^0.44.2",
-		"hono": "^4.8.4",
+		"drizzle-orm": "^0.44.3",
+		"hono": "^4.8.5",
 		"superjson": "^2.2.2",
 		"uuid": "^11.1.0",
-		"zod": "^3.25.74"
+		"zod": "^4.0.5"
 	},
 	"devDependencies": {
 		"@cw/shared": "workspace:*",
