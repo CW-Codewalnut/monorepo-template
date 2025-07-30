@@ -16,6 +16,8 @@
 		"build": "turbo run build",
 		"start": "turbo run start",
 		"dev": "turbo run dev",
+		"start:api": "turbo run start --filter=@cw/api",
+		"start:web": "turbo run start --filter=@cw/web",
 		"dev:web": "turbo run dev --filter=@cw/web",
 		"dev:api": "turbo run dev --filter=@cw/api",
 		"db:local": "turbo run db:local --filter=@cw/api",
