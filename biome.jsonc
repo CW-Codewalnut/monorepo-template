@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.1.4/schema.json",
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
@@ -18,7 +18,8 @@
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"useEditorconfig": true
 	},
 	"linter": {
 		"enabled": true,
@@ -30,6 +31,16 @@
 					"level": "on",
 					"options": {
 						"style": "separatedType"
+					}
+				}
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "on",
+					"options": {
+						"attributes": ["classList"],
+						"functions": ["clsx", "cva", "tw", "tw.*"]
 					}
 				}
 			}
@@ -56,7 +67,8 @@
 						]
 					}
 				},
-				"useSortedAttributes": "on"
+				"useSortedAttributes": "on",
+				"useSortedProperties": "on"
 			}
 		}
 	}
