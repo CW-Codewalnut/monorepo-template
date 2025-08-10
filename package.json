@@ -27,7 +27,7 @@
 		"db:migrate": "turbo run db:migrate --filter=@cw/api"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.1.2",
+		"@biomejs/biome": "2.1.4",
 		"turbo": "^2.5.5"
 	},
 	"trustedDependencies": [
