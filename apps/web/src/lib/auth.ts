@@ -1,6 +1,7 @@
-import type { Auth as ServerAuthInstance } from "@cw/api";
 import { inferAdditionalFields } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
+
+import type { Auth as ServerAuthInstance } from "@cw/api";
 
 export const authClient = createAuthClient({
 	baseURL: import.meta.env.VITE_API_URL,

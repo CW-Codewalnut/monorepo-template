@@ -61,12 +61,18 @@
 				"organizeImports": {
 					"level": "on",
 					"options": {
+						"identifierOrder": "natural",
 						"groups": [
 							[":BUN:", ":NODE:"],
+							":BLANK_LINE",
+							[":PACKAGE:", ":PACKAGE_WITH_PROTOCOL:", "!@cw/**"],
 							":BLANK_LINE:",
-							[":PACKAGE:"],
+							["@cw/**"],
 							":BLANK_LINE:",
-							["@cw/*", "~/*"]
+							[":ALIAS:"],
+							":BLANK_LINE:",
+							[":PATH:"],
+							":BLANK_LINE:"
 						]
 					}
 				},
