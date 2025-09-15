@@ -4,18 +4,18 @@ import { uuid } from "../../utils";
 
 const tableTimeStampCols = {
 	createdAt: integer({ mode: "timestamp" })
-		.$defaultFn(() => /* @__PURE__ */ new Date())
+		.$defaultFn(() => new Date())
 		.notNull(),
 
 	updatedAt: integer({ mode: "timestamp" })
-		.$defaultFn(() => /* @__PURE__ */ new Date())
+		.$defaultFn(() => new Date())
 		.notNull(),
 };
 
 const tablePrimaryCol = {
 	id: text()
 		.primaryKey()
-		.$defaultFn(() => /* @__PURE__ */ uuid())
+		.$defaultFn(() => uuid())
 		.notNull(),
 };
 
