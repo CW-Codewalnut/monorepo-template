@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "monorepo-template",
-	"packageManager": "bun@1.2.18",
+	"packageManager": "bun@1.2.20",
 	"workspaces": [
 		"apps/*",
 		"packages/*"
@@ -20,14 +20,16 @@
 		"start:web": "turbo run start --filter=@cw/web",
 		"dev:web": "turbo run dev --filter=@cw/web",
 		"dev:api": "turbo run dev --filter=@cw/api",
-		"db:local": "turbo run db:local --filter=@cw/api",
+		"build:web": "turbo run build --filter=@cw/web",
 		"db:studio": "turbo run db:studio --filter=@cw/api",
 		"db:push": "turbo run db:push --filter=@cw/api",
 		"db:generate": "turbo run db:generate --filter=@cw/api",
-		"db:migrate": "turbo run db:migrate --filter=@cw/api"
+		"db:migrate": "turbo run db:migrate --filter=@cw/api",
+		"db:seed": "turbo run db:seed --filter=@cw/api",
+		"setup": "bun scripts/setup.ts"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.2.3",
+		"@biomejs/biome": "^2.2.4",
 		"turbo": "^2.5.6"
 	},
 	"trustedDependencies": [
