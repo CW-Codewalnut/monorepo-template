@@ -19,7 +19,6 @@ Tech Stack:
   - [Bun](https://bun.sh/).
   - [Turbo](https://turborepo.com/).
   - [Biome](https://biomejs.dev/).
-  - Shared TypeScript configurations (`packages/tsconfig`) and utility code (`packages/shared`).
 
 ## Table of Contents
 
@@ -42,94 +41,53 @@ Tech Stack:
 
 - [Git](https://git-scm.com/)
 - [Bun](https://bun.sh/docs/installation) (v1.2.15 or later recommended)
-- [Turso](https://turso.tech/) CLI.
 
-## Getting Started
+## Local Setup & Installation
 
-### Cloning the Repository
+1.  **Clone the Repository**
 
-```bash
-git clone https://github.com/CW-Codewalnut/monorepo-template.git
-cd monorepo-template
-```
+    ```bash
+    git clone https://github.com/CW-Codewalnut/monorepo-template.git
+    cd monorepo-template
+    ```
 
-### Installation
+2.  **Run the Setup Script**
+    This command will install all dependencies, copy the example `.env` files, and run the initial database migration & seed the DB with a sample system settings.
 
-This project uses Bun as its package manager.
+    ```bash
+    bun setup
+    ```
 
-```bash
-bun i
-```
+3.  **Configure Environment Variables**
+    The `bun setup` script creates `.env` files in `apps/api` and `apps/web`. You must fill them with your credentials.
 
-This will install dependencies for all workspaces (`apps/*` and `packages/*`).
+    **Backend** ([`apps/api/.env`](apps/api/.env))
+    | Variable | Description | Example |
+    | ----------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+    | `APP_PORT` | Port for the backend server. | `5000` |
+    | `APP_URL` | Full public URL of the backend. | `http://localhost:5000` |
+    | `CORS_ORIGIN_1` | The URL of your frontend app to allow CORS. | `http://localhost:3000` |
+    | `DATABASE_URL` | Turso DB URL or local file path. | `file:./.database/local.db` |
+    | `DATABASE_AUTH_TOKEN` | Turso auth token (leave blank for local file DB). | `your-turso-token` |
+    | `GOOGLE_CLIENT_ID` | Your Google OAuth Client ID. | `your-google-client-id.apps.googleusercontent.com` |
+    | `GOOGLE_CLIENT_SECRET` | Your Google OAuth Client Secret. | `your-google-client-secret` |
+    | `AUTH_SECRET` | A long, random secret for signing auth tokens. Generate one with `openssl rand -hex 32`. | `a_very_long_and_random_secret_string` |
 
-### Environment Setup
+    **Frontend** ([`apps/web/.env`](apps/web/.env))
+    | Variable | Description | Example |
+    | ----------------- | ------------------------------------------- | ----------------------- |
+    | `VITE_APP_URL` | The full URL of your frontend application. | `http://localhost:3000` |
+    | `VITE_API_URL` | The full URL of your backend API. | `http://localhost:5000` |
 
-Environment variables are crucial for the application to run correctly. Copy the example files and populate them with your actual values.
+4.  **Start the Development Servers**
+    This command uses Turborepo to start both the backend and frontend servers concurrently.
 
-**1. API (`apps/api/.env`)**
+    ```bash
+    bun dev
+    ```
 
-Copy `apps/api/.env.example` to `apps/api/.env`:
-
-```bash
-cp apps/api/.env.example apps/api/.env
-```
-
-Then, edit `apps/api/.env` with your configuration:
-
-- `APP_PORT`: Port for the API server (default: `5000`).
-- `APP_URL`: Full URL of the API server (e.g., `http://localhost:$APP_PORT`).
-- `CORS_ORIGIN_1`: The origin URL for your web app (e.g., `http://localhost:3000`) to allow CORS.
-- **Database (Turso):**
-  - `DATABASE_URL`: Your Turso database URL (e.g., `libsql://your-db-name.turso.io` for a remote DB, or `http://127.0.0.1:8080` for local Turso dev).
-  - `DATABASE_AUTH_TOKEN`: Your Turso database authentication token (give a random string if using local DB).
-- **Google OAuth:**
-  - `GOOGLE_CLIENT_ID`: Your Google OAuth Client ID.
-  - `GOOGLE_CLIENT_SECRET`: Your Google OAuth Client Secret.
-- **Better Auth:**
-  - `AUTH_SECRET`: A long, random, secret string for signing authentication tokens (e.g., generate one with `openssl rand -hex 32`).
-
-**2. Web (`apps/web/.env`)**
-
-Copy `apps/web/.env.example` to `apps/web/.env`:
-
-```bash
-cp apps/web/.env.example apps/web/.env
-```
-
-Then, edit `apps/web/.env` with your configuration:
-
-- `VITE_APP_URL`: The full URL where your web application will be accessible (e.g., `http://localhost:3000`).
-- `VITE_API_URL`: The full URL of your API (e.g., `http://localhost:5000`).
-
-**3. DB Setup.**
-
-Create `.database` folder in the `apps/api` directory.
-
-```bash
-mkdir apps/api/.database
-```
-
-Sync the schema to the database.
-
-```bash
-bun db:migrate
-```
-
-**Running the Development Servers:**
-
-To start both the API and Web development servers concurrently:
-
-```bash
-bun dev
-```
-
-This command uses Turbo to run the `dev` script in both `apps/api/package.json` and `apps/web/package.json`.
-
-- API will be available at `http://localhost:5000` (or your `APP_PORT`).
-- Web app will be available at `http://localhost:3000` (or your `VITE_APP_URL`).
-
-For local database development with Turso, you might need to run `bun db:local` in a separate terminal before `bun dev` if not handled by the `with` directive in `turbo.json` for your setup.
+    - API will be running at `http://localhost:5000`
+    - Web app will be running at `http://localhost:3000`
 
 ## Project Structure
 
@@ -137,7 +95,7 @@ The monorepo is organized into `apps` (runnable applications) and `packages` (sh
 
 ### Root Directory
 
-- `biome.json`: Configuration for Biome (formatter and linter).
+- `biome.jsonc`: Configuration for Biome (formatter and linter).
 - `package.json`: Root project configuration, workspace definitions, and top-level scripts orchestrated by Turbo.
 - `turbo.json`: Configuration for Turbo, defining tasks, dependencies between tasks, and caching strategies.
 - `.editorconfig`: Defines consistent coding styles across different editors.
@@ -237,6 +195,7 @@ Contains base TypeScript configurations that other packages can extend.
 
 Scripts are defined in the root `package.json` and orchestrated by Turbo.
 
+- `bun setup`: Runs the setup script, which installs dependencies, copies environment files, runs database migrations and seeds the database.
 - `bun clean`: Removes `node_modules`, `.turbo`, `dist`, `build` directories, and `bun.lock`, `*.tsbuildinfo` files across the monorepo.
 - `bun format`: Formats code using Biome.
 - `bun lint`: Lints code using Biome and applies auto-fixes.
@@ -248,8 +207,8 @@ Scripts are defined in the root `package.json` and orchestrated by Turbo.
 - `bun dev:web`: Starts only the Web app development server.
 - `bun dev:api`: Starts only the API development server.
 - **Database Scripts (run via Turbo, filtering for `@cw/api`):**
-  - `bun db:local`: Starts a local Turso development database server (`turso dev --db-file .database/local.db`).
   - `bun db:studio`: Opens Drizzle Studio to inspect the database.
   - `bun db:push`: Pushes schema changes directly to the database (useful for prototyping, skips migrations).
   - `bun db:generate`: Generates Drizzle migration files based on schema changes.
   - `bun db:migrate`: Applies pending migrations to the database.
+  - `bun db:seed`: Seeds the database with sample data.
