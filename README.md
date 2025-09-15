@@ -1,6 +1,21 @@
 This is a full-stack monorepo template built with a modern TypeScript-first technology stack, designed for rapid development and type safety from end-to-end.
 
-Tech Stack:
+## Table of Contents
+
+1.  [Tech Stack](#tech-stack)
+2.  [Prerequisites](#prerequisites)
+3.  [Getting Started](#getting-started)
+4.  [Project Structure](#project-structure)
+    - [Root Directory](#root-directory)
+    - [Apps (`apps/`)](#apps-apps)
+      - [API (`apps/api/`)](#api-appsapi)
+      - [Web (`apps/web/`)](#web-appsweb)
+    - [Packages (`packages/`)](#packages-packages)
+      - [Shared (`packages/shared/`)](#shared-packagesshared)
+      - [TSConfig (`packages/tsconfig/`)](#tsconfig-packagestsconfig)
+5.  [Available Scripts](#available-scripts)
+
+## Tech Stack
 
 - **Backend API (`apps/api`):**
   - [Hono](https://hono.dev/).
@@ -20,29 +35,12 @@ Tech Stack:
   - [Turbo](https://turborepo.com/).
   - [Biome](https://biomejs.dev/).
 
-## Table of Contents
-
-1.  [Prerequisites](#prerequisites)
-2.  [Getting Started](#getting-started)
-    - [Cloning the Repository](#cloning-the-repository)
-    - [Installation](#installation)
-    - [Environment Setup](#environment-setup)
-3.  [Project Structure](#project-structure)
-    - [Root Directory](#root-directory)
-    - [Apps (`apps/`)](#apps-apps)
-      - [API (`apps/api/`)](#api-appsapi)
-      - [Web (`apps/web/`)](#web-appsweb)
-    - [Packages (`packages/`)](#packages-packages)
-      - [Shared (`packages/shared/`)](#shared-packagesshared)
-      - [TSConfig (`packages/tsconfig/`)](#tsconfig-packagestsconfig)
-4.  [Available Scripts](#available-scripts)
-
 ## Prerequisites
 
 - [Git](https://git-scm.com/)
 - [Bun](https://bun.sh/docs/installation) (v1.2.15 or later recommended)
 
-## Local Setup & Installation
+## Getting Started
 
 1.  **Clone the Repository**
 
