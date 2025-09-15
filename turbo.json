@@ -17,30 +17,27 @@
 		"dev": {
 			"cache": false,
 			"persistent": true,
-			"with": ["db:local", "db:studio"]
+			"with": ["db:studio"]
 		},
 		"start": {
-			"cache": false,
-			"persistent": true,
-			"with": ["db:local"]
-		},
-		"db:local": {
 			"cache": false,
 			"persistent": true
 		},
 		"db:studio": {
 			"cache": false,
-			"persistent": true,
-			"with": ["db:local"]
+			"persistent": true
 		},
 		"db:migrate": {
 			"cache": false,
-			"persistent": true,
-			"with": ["db:local"]
+			"persistent": true
 		},
 		"db:generate": {
 			"cache": false,
 			"persistent": true
+		},
+		"db:seed": {
+			"cache": false,
+			"persistent": false
 		}
 	}
 }
